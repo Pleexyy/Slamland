@@ -17,7 +17,7 @@ public class Commerce {
     }
 
     /*
-     * rÃ©cupÃ¨re la liste des personnes ayant rÃ©alisÃ© un ou plusieurs achats et
+     * récupère la liste des personnes ayant réalisé un ou plusieurs achats et
      * l'affiche au format CSV
      */
     public String getLesConsommateurs() {

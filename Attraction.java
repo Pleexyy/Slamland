@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Attraction {
 
-    /* attributs privÃ©s */
+    /* attributs privés */
     private String nom, chaine;
     private int capaciteMax, duree;
     private ArrayList<Visiteur> lesVisiteurs;
@@ -38,7 +38,7 @@ public class Attraction {
         return this.nom;
     }
 
-    /* rÃ©cupÃ¨re les visiteurs d'une attraction et l'affiche au format JSON */
+    /* récupère les visiteurs d'une attraction et l'affiche au format JSON */
     public String getLesVisiteurs() {
         String chaine = "\n";
         chaine += "{\"visiteurs\":" + '\n';

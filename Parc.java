@@ -5,7 +5,7 @@ public class Parc extends JPanel {
     /**
      *
      */
-    /* attributs privÃ©s */
+    /* attributs privés */
     private static final long serialVersionUID = 1L;
     private String nom, ville;
     private int id;
@@ -34,7 +34,7 @@ public class Parc extends JPanel {
         return this.id;
     }
 
-    /* fonction qui rÃ©cupÃ¨re la liste des attractions et l'affiche au format XML */
+    /* fonction qui récupére la liste des attractions et l'affiche au format XML */
     public String getLesAttractions() {
         String chaine = "";
         chaine += "\n" + "<?xml version='1.0' encoding='UTF-8'?>";

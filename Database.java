@@ -8,12 +8,12 @@ public class Database {
 			resultConsommateurs, resultMagasins, resultArticles, resultCompte;
 	private static int resultInsert, resultDelete;
 
-	/* fonction de connexion Ã  la base de donnÃ©es */
+	/* fonction de connexion à la base de données */
 	public static void connexionBdd() {
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			connexion = DriverManager
-					.getConnection("jdbc:mariadb://localhost:3306/slamland?user=root&password=couleuvre");
+					.getConnection("jdbc:mysql://172.16.250.8/slamland?user=sio&password=slam");
 			connexion.createStatement();
 		}
 
@@ -24,7 +24,7 @@ public class Database {
 		}
 	}
 
-	/* fonction de dÃ©connexion de notre base de donnÃ©es */
+	/* fonction de déconnexio, de notre base de données */
 	public static void deconnexionBdd() {
 		try {
 			connexion.close();
@@ -54,7 +54,7 @@ public class Database {
 		return rep;
 	}
 
-	/* fonction qui rÃ©cupÃ¨re la liste des parcs */
+	/* fonction qui récupére la liste des parcs */
 	public static ArrayList<Parc> getLesParcs() {
 		ArrayList<Parc> lesParcs = new ArrayList<Parc>();
 		try {
@@ -90,7 +90,7 @@ public class Database {
 		return lesParcs;
 	}
 
-	/* fonctions qui rÃ©cupÃ¨re la liste des attractions */
+	/* fonctions qui récupére la liste des attractions */
 	public static ArrayList<Attraction> getLesAttractions() {
 		ArrayList<Attraction> lesAttractions = new ArrayList<Attraction>();
 		try {
@@ -126,7 +126,7 @@ public class Database {
 		return lesAttractions;
 	}
 
-	/* fonction qui rÃ©cupÃ¨re la liste des commerces */
+	/* fonction qui récupére la liste des commerces */
 	public static ArrayList<Commerce> getLesCommerces() {
 		ArrayList<Commerce> lesCommerces = new ArrayList<Commerce>();
 		try {
@@ -161,7 +161,7 @@ public class Database {
 		return lesCommerces;
 	}
 
-	/* fonction qui rÃ©cupÃ¨re la liste des magasins */
+	/* fonction qui récupére la liste des magasins */
 	public static ArrayList<Magasin> getLesMagasins() {
 		ArrayList<Magasin> lesMagasins = new ArrayList<Magasin>();
 		try {
@@ -196,7 +196,7 @@ public class Database {
 		return lesMagasins;
 	}
 
-	/* fonction qui rÃ©cupÃ¨re le chiffre d'affaires du parc selectionnÃ© */
+	/* fonction qui récupére le chiffre d'affaires du parc selectionné */
 	public static int getLesCA(String nomParc) {
 		int total = 0;
 		int nbParticipations, prixbillet;
@@ -218,7 +218,7 @@ public class Database {
 				while (resultCompte.next()) {
 					nbParticipations = resultCompte.getInt("nbParticipations");
 					/*
-					 * on rÃ©cupÃ¨re le chiffre d'affaires de l'attraction en multipliant le prix par
+					 * on récupére le chiffre d'affaires de l'attraction en multipliant le prix par
 					 * le nombre de participants de l'attraction
 					 */
 					total = prixbillet * nbParticipations;
@@ -232,7 +232,7 @@ public class Database {
 		return total;
 	}
 
-	/* fonction qui ajoute un visiteur avec les donnÃ©es passÃ©es en paramÃ¨tre */
+	/* fonction qui ajoute un visiteur avec les données passées en paramètre */
 	public static int ajouterVisiteur(int valId, String valNom, String valPrenom, String valDateNaissance) {
 		try {
 			connexionBdd();
@@ -252,7 +252,7 @@ public class Database {
 		return resultInsert;
 	}
 
-	/* rÃ©cupÃ¨re les visiteurs sous la forme d'une ArrayList de type Visiteur */
+	/* récupére les visiteurs sous la forme d'une ArrayList de type Visiteur */
 	public static ArrayList<Visiteur> getLesVisiteurs() {
 		ArrayList<Visiteur> visiteurs1 = new ArrayList<Visiteur>();
 		try {
@@ -279,7 +279,7 @@ public class Database {
 	}
 
 	/*
-	 * supprime le visiteur de la base de donnÃ©es dont l'id est passÃ© en paramÃ¨tre
+	 * supprime le visiteur de la base de données dont l'id est passé en paramètre
 	 */
 	public static int supprimerVisiteur(int id) {
 		try {

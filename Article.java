@@ -1,5 +1,5 @@
 public class Article {
-    /* attributs privÃ©s */
+    /* attributs privés */
     private String libelle, chaine;
     private float prix;
 

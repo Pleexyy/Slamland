@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Magasin {
-    /* attributs privÃ©s */
+    /* attributs privés */
     private String nom;
     private ArrayList<Article> lesArticles;
 
@@ -21,7 +21,7 @@ public class Magasin {
         return this.nom;
     }
 
-    /* fonction qui rÃ©cupÃ¨re les articles et l'affiche au format JSON */
+    /* fonction qui récupére les articles et les affiche au format JSON */
     public String getLesArticles() {
         String chaine = "\n";
         chaine += "{\"articles\":" + '\n';

@@ -1,5 +1,5 @@
 public class Restaurant {
-    /* attributs privÃ©s */
+    /* attributs privés */
     private String nbTables;
     private int capacite;
 
