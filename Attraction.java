@@ -5,6 +5,7 @@ public class Attraction {
     /* attributs privés */
     private String nom, chaine;
     private int capaciteMax, duree;
+    private float prix;
     private ArrayList<Visiteur> lesVisiteurs;
 
     /* constructeur */
@@ -21,6 +22,13 @@ public class Attraction {
         this.duree = duree;
         this.lesVisiteurs = lesVisiteurs;
     }
+    
+    /* constructeur */
+    public Attraction(String nom, int capaciteMax, int duree, float prix) {
+        this.nom = nom;
+        this.capaciteMax = capaciteMax;
+        this.duree = duree;
+    }
 
     /* constructeur */
     public Attraction(String nom, ArrayList<Visiteur> lesVisiteurs) {
@@ -36,6 +44,21 @@ public class Attraction {
     /* getter */
     public String getNom() {
         return this.nom;
+    }
+    
+    /* getter */
+    public int getCapaciteMax() {
+        return this.capaciteMax;
+    }
+    
+    /* getter */
+    public int getDuree() {
+        return this.duree;
+    }
+    
+    /* getter */
+    public float getPrix() {
+        return this.prix;
     }
 
     /* récupère les visiteurs d'une attraction et l'affiche au format JSON */

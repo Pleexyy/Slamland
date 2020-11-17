@@ -48,7 +48,7 @@ public class VueConnexion extends JPanel implements ActionListener {
 		loginButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		loginButton.addActionListener(this);
 
-		/* ajoute les Ã©lÃ©ments Ã  notre panel */
+		/* ajoute les éléments à notre panel */
 		this.add(welcome);
 		this.add(userLabel);
 		this.add(userText);
@@ -79,8 +79,8 @@ public class VueConnexion extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		/*
-		 * appelle notre fonction de connexion Ã  la base de donnÃ©es et affiche notre
-		 * menu si la connexion a bien Ã©tÃ© effectuÃ©e
+		 * appelle notre fonction de connexion Ã  la base de données et affiche notre
+		 * menu si la connexion a bien été effectuée
 		 */
 		if (e.getSource() == loginButton) {
 			String login = userText.getText();

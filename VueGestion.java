@@ -172,6 +172,16 @@ public class VueGestion extends JPanel implements ActionListener {
         repaint();
         revalidate();
     }
+    
+    
+    public void champsVides() {
+        JOptionPane.showMessageDialog(this, "Les champs sont vides .", "Erreur d'ajout'", JOptionPane.WARNING_MESSAGE);
+        removeAll();
+        remplirPanel();
+        repaint();
+        revalidate();
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -193,7 +203,7 @@ public class VueGestion extends JPanel implements ActionListener {
                 notRemoved();
             }
 
-        } else if (e.getSource() == ajouterButton) {
+        } else if (e.getSource() == ajouterButton && !id.getText().isEmpty() && !prenom.getText().isEmpty() && !nom.getText().isEmpty() && !dateNaissance.getText().isEmpty()) {
             int valId = Integer.parseInt(id.getText());
             String valPrenom = prenom.getText();
             String valNom = nom.getText();
@@ -214,6 +224,8 @@ public class VueGestion extends JPanel implements ActionListener {
             } else {
                 notAdded();
             }
+        } else if (e.getSource() == ajouterButton) {
+        	champsVides();
         }
 
     }

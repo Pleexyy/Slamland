@@ -5,7 +5,7 @@ public class Database {
 	private static Connection connexion;
 	private static PreparedStatement preparedStatement, preparedStatement2;
 	private static ResultSet result, resultParc, resultAttractions, resultVisiteurs, resultCommerces,
-			resultConsommateurs, resultMagasins, resultArticles, resultCompte;
+			resultConsommateurs, resultMagasins, resultArticles, resultCompte, resultNb, resultListe;
 	private static int resultInsert, resultDelete;
 
 	/* fonction de connexion à la base de données */
@@ -267,7 +267,7 @@ public class Database {
 				String nom = resultVisiteurs.getString("nom");
 				String prenom = resultVisiteurs.getString("prenom");
 				String dateNaissance = resultVisiteurs.getString("dateNaissance");
-				Visiteur visiteur = new Visiteur(id, nom, prenom, dateNaissance);
+				Visiteur visiteur = new Visiteur(id, nom, prenom, dateNaissance);		
 				visiteurs1.add(visiteur);
 			}
 			resultVisiteurs.close();
@@ -296,5 +296,49 @@ public class Database {
 		}
 		return resultDelete;
 	}
+	
+	public static int getNbAttractions() {
+		int rep = 0;
+		try {
+			connexionBdd();
+			String rsSelect = "select count(id) as nbAttractions from attractions";
+			preparedStatement = connexion.prepareStatement(rsSelect);
+			resultNb = preparedStatement.executeQuery();
+			
+			if (resultNb.next()) {
+				int nb = resultNb.getInt("nbAttractions");
+				rep = nb;
+			}
+	        
+			deconnexionBdd();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rep;
+	}
+	
+	public static String afficherLesAttractions() {
+		String chaine = "";
+		try {
+			connexionBdd();
+			String rsSelect = "select id, nom, capaciteMax, duree from attractions";
+			preparedStatement = connexion.prepareStatement(rsSelect);
+			resultListe = preparedStatement.executeQuery();
+			
+			while (resultListe.next()) {
+				int id = resultListe.getInt("id");
+				String nom = resultListe.getString("nom");
+				int capaciteMax = resultListe.getInt("capaciteMax");
+				float duree = resultListe.getFloat("duree");
+				chaine += "\nid : " + id + "\nnom : " + nom + " \ncapaciteMax : " + capaciteMax + " \nduree : " + duree + "\n";
+			}
+	        
+			deconnexionBdd();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return chaine;
+	}
+	
 
 }

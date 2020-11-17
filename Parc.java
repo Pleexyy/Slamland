@@ -48,7 +48,7 @@ public class Parc extends JPanel {
 
     public String calculerCA(String nomParc) {
         String chaine = "";
-        chaine += "chiffre d'affaires du parc : " + Database.getLesCA(nomParc) + " â‚¬";
+        chaine += "chiffre d'affaires du parc : " + Database.getLesCA(nomParc) + " €";
         return chaine;
     }
 
