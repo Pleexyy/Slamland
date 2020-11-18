@@ -21,23 +21,23 @@ public class VueCa extends JPanel implements ActionListener {
         this.frame = frame;
         listeParcs = Database.getLesParcs();
         welcome = new JLabel();
-        welcome.setText("Veuillez sÃ©lectionner un parc d'attractions");
+        welcome.setText("Veuillez sélectionner un parc d'attractions");
         welcome.setBounds(50, 50, 50, 50);
 
-        /* ajoute chaque Ã©lÃ©ment de notre liste d'attractions dans une JComboBox */
+        /* ajoute chaque élément de notre liste d'attractions dans une JComboBox */
         for (int i = 0; i < listeParcs.size(); i++) {
             parcs.addItem(listeParcs.get(i).getNom());
         }
 
         /* texte informatif */
         generate = new JLabel();
-        generate.setText("Le chiffre d'affaires du parc choisi sera affichÃ© dans la console.");
+        generate.setText("Le chiffre d'affaires du parc choisi sera affiché dans le champ de texte.");
         generate.setBounds(150, 150, 100, 100);
 
         textArea = new TextArea();
         textArea.setBounds(10, 30, 300, 300);
 
-        /* ajoute les Ã©lÃ©ments Ã  notre JPanel */
+        /* ajoute les éléments à notre JPanel */
         this.add(welcome);
         this.add(generate);
         this.add(parcs);

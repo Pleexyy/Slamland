@@ -5,7 +5,7 @@ public class Database {
 	private static Connection connexion;
 	private static PreparedStatement preparedStatement, preparedStatement2;
 	private static ResultSet result, resultParc, resultAttractions, resultVisiteurs, resultCommerces,
-			resultConsommateurs, resultMagasins, resultArticles, resultCompte, resultNb, resultListe;
+			resultConsommateurs, resultMagasins, resultArticles, resultCompte, resultNb, resultListe, resultDuree, resultSearch;
 	private static int resultInsert, resultDelete;
 
 	/* fonction de connexion à la base de données */
@@ -95,7 +95,7 @@ public class Database {
 		ArrayList<Attraction> lesAttractions = new ArrayList<Attraction>();
 		try {
 			connexionBdd();
-			String rsAttractions = "select id as idattraction, nom from attractions;";
+			String rsAttractions = "select id as idattraction, nom, capaciteMax, duree from attractions;";
 			preparedStatement = connexion.prepareStatement(rsAttractions);
 			resultAttractions = preparedStatement.executeQuery();
 
@@ -103,7 +103,9 @@ public class Database {
 				ArrayList<Visiteur> lesVisiteurs = new ArrayList<Visiteur>();
 				int idattraction = resultAttractions.getInt("idattraction");
 				String nom = resultAttractions.getString("nom");
-
+				int capaciteMax = resultAttractions.getInt("capaciteMax");
+				int duree = resultAttractions.getInt("duree");
+				
 				String rsVisiteurs = "select prenom, nom, dateNaissance from participer where idattraction = ?;";
 				preparedStatement2 = connexion.prepareStatement(rsVisiteurs);
 				preparedStatement2.setInt(1, idattraction);
@@ -116,7 +118,7 @@ public class Database {
 
 					lesVisiteurs.add(new Visiteur(prenom, nomVisiteur, dateNaissance));
 				}
-				lesAttractions.add(new Attraction(nom, lesVisiteurs));
+				lesAttractions.add(new Attraction(nom, capaciteMax, duree, lesVisiteurs));
 			}
 			resultAttractions.close();
 			deconnexionBdd();
@@ -332,7 +334,7 @@ public class Database {
 				float duree = resultListe.getFloat("duree");
 				chaine += "\nid : " + id + "\nnom : " + nom + " \ncapaciteMax : " + capaciteMax + " \nduree : " + duree + "\n";
 			}
-	        
+	        resultListe.close();
 			deconnexionBdd();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -340,5 +342,40 @@ public class Database {
 		return chaine;
 	}
 	
+	public static int getDureeAttractions() {
+		int duree = 0;
+		try {
+			connexionBdd();
+			String rsSelect = "select sum(duree) as dureeTotale from attractions";
+			preparedStatement = connexion.prepareStatement(rsSelect);
+			resultDuree = preparedStatement.executeQuery();
+			
+			while(resultDuree.next()) {
+				duree = resultDuree.getInt("dureeTotale");
+			}
+			resultDuree.close();
+			deconnexionBdd();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return duree;
+	}
+	
+	public static boolean rechercheVisiteur(int id) {
+		boolean rep = false;
+		try {
+			connexionBdd();
+			String rsSearch = "select nom from visiteur where id = '" + id + "';";
+			preparedStatement = connexion.prepareStatement(rsSearch);
+			resultSearch = preparedStatement.executeQuery();
+			
+			if (resultSearch.next()) {
+				rep = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rep;
+	}
 
 }

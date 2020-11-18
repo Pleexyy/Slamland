@@ -15,11 +15,11 @@ public class Window extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Slamland");
 
-		// permet de centrer la frame au milieu de l'Ã©cran
+		// permet de centrer la frame au milieu de l'écran
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
-		/* la premiÃ¨re vue appellÃ©e est celle de la connexion */
+		/* la première vue appellée est celle de la connexion */
 		VueConnexion pageConnexion = new VueConnexion(this);
 		this.getContentPane().add(pageConnexion);
 

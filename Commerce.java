@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Commerce {
-    /* attributs privÃ©s */
+    /* attributs privés */
     private String nom;
     private ArrayList<Visiteur> lesConsommateurs;
 
@@ -22,7 +22,7 @@ public class Commerce {
      */
     public String getLesConsommateurs() {
         String chaine = "";
-        chaine += "\n" + "prÃ©nom consommateur, nom consommateur" + "\n";
+        chaine += "\n" + "prénom consommateur, nom consommateur" + "\n";
         for (int i = 0; i < lesConsommateurs.size(); i++) {
             chaine += lesConsommateurs.get(i).toCSV();
         }

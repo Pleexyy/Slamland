@@ -1,9 +1,14 @@
 public class Visiteur {
 
-    /* attributs privÃ©s */
+    /* attributs privés */
     private String nom, prenom, dateNaissance, chaine;
     private int id;
-
+    	
+    /* constructeur */
+    public Visiteur(int id) {
+        this.id = id;
+    }
+    
     /* constructeur */
     public Visiteur(String nom, String prenom, String dateNaissance) {
         this.nom = nom;
@@ -45,7 +50,7 @@ public class Visiteur {
         return this.id;
     }
 
-    /* fonction qui renvoie une chaine de caractÃ¨res au format JSON */
+    /* fonction qui renvoie une chaine de caractères au format JSON */
     public String toJSON() {
         chaine = "";
         chaine += "[{ \"prenom\":" + "\"" + this.prenom + "\"" + ", \"nom\":" + "\"" + this.nom + "\""
@@ -53,7 +58,7 @@ public class Visiteur {
         return chaine;
     }
 
-    /* fonction qui renvoie une chaine de caractÃ¨res au format CSV */
+    /* fonction qui renvoie une chaine de caractères au format CSV */
     public String toCSV() {
         chaine = "";
         chaine += this.prenom + "," + this.nom;

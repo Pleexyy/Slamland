@@ -20,10 +20,10 @@ public class VueVisiteurs extends JPanel implements ActionListener {
         this.frame = frame;
         listeAttractions = Database.getLesAttractions();
         welcome = new JLabel();
-        welcome.setText("Veuillez sÃ©lectionner une attraction");
+        welcome.setText("Veuillez sélectionner une attraction");
         welcome.setBounds(50, 50, 50, 50);
 
-        /* ajoute chaque Ã©lÃ©ment de notre liste d'attractions dans une JComboBox */
+        /* ajoute chaque élément de notre liste d'attractions dans une JComboBox */
         for (int i = 0; i < listeAttractions.size(); i++) {
             attractions.addItem(listeAttractions.get(i).getNom());
         }
@@ -33,15 +33,15 @@ public class VueVisiteurs extends JPanel implements ActionListener {
 
         /* texte informatif */
         generate = new JLabel();
-        generate.setText("Un texte au format JSON sera affichÃ© dans la console.");
+        generate.setText("Un texte au format JSON sera affiché dans le champs de texte.");
         generate.setBounds(150, 150, 100, 100);
 
         /* texte informatif */
         generate2 = new JLabel();
-        generate2.setText("Il contiendra la liste des visiteurs ayant participÃ© Ã  l'attraction choisie");
+        generate2.setText("Il contiendra la liste des visiteurs ayant participé à l'attraction choisie");
         generate2.setBounds(175, 150, 100, 100);
 
-        /* ajoute les Ã©lÃ©ments Ã  notre JPanel */
+        /* ajoute les éléments à notre JPanel */
         this.add(welcome);
         this.add(generate);
         this.add(generate2);

@@ -20,27 +20,27 @@ public class VueCommerce extends JPanel implements ActionListener {
         this.frame = frame;
         listeCommerces = Database.getLesCommerces();
         welcome = new JLabel();
-        welcome.setText("Veuillez sÃ©lectionner un commerce");
+        welcome.setText("Veuillez sélectionner un commerce");
         welcome.setBounds(50, 50, 50, 50);
 
-        /* ajoute chaque Ã©lÃ©ment de notre liste de commerces dans une JComboBox */
+        /* ajoute chaque élément de notre liste de commerces dans une JComboBox */
         for (int i = 0; i < listeCommerces.size(); i++) {
             commerces.addItem(listeCommerces.get(i).getNom());
         }
         /* texte informatif */
         generate = new JLabel();
-        generate.setText("Un texte au format CSV sera affichÃ© dans la console.");
+        generate.setText("Un texte au format CSV sera affiché dans le champ de texte.");
         generate.setBounds(150, 150, 100, 100);
 
         /* texte informatif */
         generate2 = new JLabel();
-        generate2.setText("Il contiendra la liste des consommateurs (personnes ayant achetÃ©)");
+        generate2.setText("Il contiendra la liste des consommateurs (personnes ayant acheté)");
         generate2.setBounds(175, 150, 100, 100);
 
         textArea = new TextArea();
         textArea.setBounds(10, 30, 300, 300);
 
-        /* ajoute les Ã©lÃ©ments Ã  notre panel */
+        /* ajoute les éléments à notre panel */
         this.add(welcome);
         this.add(generate);
         this.add(generate2);
@@ -67,7 +67,7 @@ public class VueCommerce extends JPanel implements ActionListener {
                 int index = commerces.getSelectedIndex();
 
                 Commerce commerce = listeCommerces.get(index);
-                /* ajout du texte Ã  notre zone de texte */
+                /* ajout du texte à notre zone de texte */
                 setText(commerce.getLesConsommateurs());
             }
         });

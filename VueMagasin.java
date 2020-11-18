@@ -20,28 +20,28 @@ public class VueMagasin extends JPanel implements ActionListener {
         this.frame = frame;
         listeMagasins = Database.getLesMagasins();
         welcome = new JLabel();
-        welcome.setText("Veuillez sÃ©lectionner un magasin.");
+        welcome.setText("Veuillez sélectionner un magasin.");
         welcome.setBounds(50, 50, 50, 50);
 
-        /* ajoute chaque Ã©lÃ©ment de notre liste de magasins dans une JComboBox */
+        /* ajoute chaque élément de notre liste de magasins dans une JComboBox */
         for (int i = 0; i < listeMagasins.size(); i++) {
             articles.addItem(listeMagasins.get(i).getNom());
         }
 
         /* texte informatif */
         generate = new JLabel();
-        generate.setText("Un tableau sera gÃ©nÃ©rÃ©.");
+        generate.setText("Un texte sera généré.");
         generate.setBounds(150, 150, 100, 100);
 
         /* texte informatif */
         generate2 = new JLabel();
-        generate2.setText("Il contiendra la liste des articles prÃ©sents dans le magasin choisi.");
+        generate2.setText("Il contiendra la liste des articles présents dans le magasin choisi.");
         generate2.setBounds(175, 150, 100, 100);
 
         textArea = new TextArea();
         textArea.setBounds(10, 30, 300, 300);
 
-        /* ajoute les Ã©lÃ©ments Ã  notre panel */
+        /* ajoute les éléments à notre panel */
         this.add(welcome);
         this.add(generate);
         this.add(generate2);

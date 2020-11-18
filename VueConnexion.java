@@ -62,7 +62,7 @@ public class VueConnexion extends JPanel implements ActionListener {
 
 	/* fonction qui affiche une boite de dialogue pour confirmer la connexion */
 	public void connected() {
-		JOptionPane.showMessageDialog(this, "Connexion rÃ©ussie.");
+		JOptionPane.showMessageDialog(this, "Connexion réussie.");
 		revalidate();
 		removeAll();
 	}

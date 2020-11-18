@@ -16,7 +16,7 @@ public class Attraction {
     }
 
     /* constructeur */
-    public Attraction(String nom, int capaciteMax, int duree, float prix, ArrayList<Visiteur> lesVisiteurs) {
+    public Attraction(String nom, int capaciteMax, int duree, ArrayList<Visiteur> lesVisiteurs) {
         this.nom = nom;
         this.capaciteMax = capaciteMax;
         this.duree = duree;
@@ -28,6 +28,7 @@ public class Attraction {
         this.nom = nom;
         this.capaciteMax = capaciteMax;
         this.duree = duree;
+        this.prix = prix;
     }
 
     /* constructeur */

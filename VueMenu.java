@@ -11,14 +11,14 @@ public class VueMenu extends JPanel implements ActionListener {
     private static final long serialVersionUID = 1L;
     private JMenuBar barre;
     private JMenu menu, gestionVisiteurs;
-    private JMenuItem attraction, visiteurs, commerces, magasins, ca, modificationVisiteurs;
+    private JMenuItem attraction, visiteurs, commerces, magasins, ca, modificationVisiteurs, rechercherVisiteur;
 
     public VueMenu(JFrame frame) {
         barre = new JMenuBar();
         menu = new JMenu("Affichage des informations");
         gestionVisiteurs = new JMenu("Gestion des visiteurs");
 
-        /* crÃ©ation de chaque option de menu */
+        /* création de chaque option de menu */
         ca = new JMenuItem("Afficher le chiffre d'affaires d'un parc d'attractions");
         attraction = new JMenuItem("Afficher les attractions d'un parc");
         visiteurs = new JMenuItem("Afficher les visiteurs d'une attraction");
@@ -26,6 +26,7 @@ public class VueMenu extends JPanel implements ActionListener {
         magasins = new JMenuItem("Afficher les articles d'un magasin");
 
         modificationVisiteurs = new JMenuItem("Ajouter / Supprimer un visiteur");
+        rechercherVisiteur = new JMenuItem("Rechercher un visiteur");
 
         /* ajout des actions listeners pour chaque items de notre menu */
         attraction.addActionListener(new VueAttractions(frame));
@@ -33,26 +34,29 @@ public class VueMenu extends JPanel implements ActionListener {
         commerces.addActionListener(new VueCommerce(frame));
         magasins.addActionListener(new VueMagasin(frame));
         ca.addActionListener(new VueCa(frame));
+        
         modificationVisiteurs.addActionListener(new VueGestion(frame));
-
-        /* ajoute les items crÃ©Ã©s Ã  notre menu */
+        rechercherVisiteur.addActionListener(new VueRecherche(frame));
+        
+        /* ajoute les items créés à notre menu */
         menu.add(ca);
         menu.add(attraction);
         menu.add(visiteurs);
         menu.add(commerces);
         menu.add(magasins);
 
-        /* ajoute les items crÃ©Ã©s Ã  notre second menu */
+        /* ajoute les items créés Ã  notre second menu */
         gestionVisiteurs.add(modificationVisiteurs);
+        gestionVisiteurs.add(rechercherVisiteur);
 
-        /* ajoute les menus Ã  notre barre */
+        /* ajoute les menus à notre barre */
         barre.add(menu);
         barre.add(gestionVisiteurs);
 
         this.add(barre);
 
         frame.getContentPane().add(this);
-        /* ajoute le menu Ã  notre fenetre */
+        /* ajoute le menu à notre fenetre */
         frame.setJMenuBar(barre);
 
     }
