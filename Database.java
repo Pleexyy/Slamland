@@ -18,18 +18,18 @@ public class Database {
 		}
 
 		catch (SQLException e) {
-			System.err.println("Erreur de connexion Ã  la base de donnÃ©ees " + e);
+			System.err.println("Erreur de connexion Ã  la base de donnéees " + e);
 		} catch (ClassNotFoundException e) {
 			System.err.println("Driver non chargÃ© " + e);
 		}
 	}
 
-	/* fonction de déconnexio, de notre base de données */
+	/* fonction de déconnexion de notre base de données */
 	public static void deconnexionBdd() {
 		try {
 			connexion.close();
 		} catch (SQLException e) {
-			System.err.println("Erreur lors de la dÃ©connexion " + e);
+			System.err.println("Erreur lors de la déconnexion " + e);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class Database {
 		boolean rep = false;
 		try {
 			connexionBdd();
-			String rsInfo = "select count(login) as nb from utilisateur where login = ? and mdp = ?;";
+			String rsInfo = "select count(login) as nb from utilisateur where login = ? and mdp = md5(?);";
 			preparedStatement = connexion.prepareStatement(rsInfo);
 			preparedStatement.setString(1, login);
 			preparedStatement.setString(2, mdp);
